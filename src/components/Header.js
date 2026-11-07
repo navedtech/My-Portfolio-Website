@@ -5,7 +5,7 @@ const Header = ({ currentTheme, toggleTheme }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark nav-glass fixed-top">
       <div className="container-fluid container-narrow">
-        <a className="navbar-brand fw-bold" href="#home">PORTFOLIO</a>
+        <a className="navbar-brand fw-bold" href="#home">NAVED PORTFOLIO</a>
         
         <button 
           

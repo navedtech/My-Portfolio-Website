@@ -2,6 +2,13 @@ import React from 'react';
 
 const projectsData = [
   {
+    title: 'AI Interview platform',
+    description: 'An AI-powered interview platform for conducting your interviews. Built with React, Node.js, Express, MongoDB and OpenAI API.',
+    liveLink: 'https://aiinterview-owch.onrender.com/',
+    sourceLink: 'https://github.com/navedtech/AiInterview',
+    image: 'https://images.unsplash.com/photo-1678227547330-7b17f29fd1ff?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D',
+  },
+  {
     title: 'Track Weather',
     description: 'Create a weather app with using of API in JavaScript.',
     liveLink: 'https://navedtech.github.io/Weather-App/',
@@ -9,7 +16,7 @@ const projectsData = [
     image: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&s=000',
   },
   {
-    title: 'Responsive eCommerce UI',
+    title: 'E-Commerce UI',
     description: 'Product listing, filtering and UI interactions built with Bootstrap & custom CSS.',
     liveLink: '#',
     sourceLink: '#',

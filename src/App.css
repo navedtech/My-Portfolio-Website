@@ -151,9 +151,46 @@ h2{font-size:1.6rem;margin-bottom:10px}
 .about-list li{padding:8px 0;display:flex;align-items:center;color:var(--text-light)}
 .about-list i{font-size:1rem;color:var(--accent)}
 
-/* -------------------- Progress / Skills -------------------- */
-.progress-rounded{height:12px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
-.progress-bar{height:12px;border-radius:999px;transition:width 1000ms cubic-bezier(.2,.9,.2,1);background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+/* ---------- Skills section ---------- */
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  gap: 12px;
+}
+
+.skill-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px 8px;
+  text-align: center;
+  font-size: 0.85rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skill-icon {
+  font-size: 2rem;
+  color: var(--accent, #6c8cff);
+}
+
+.skill-tile:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent, #6c8cff);
+  box-shadow: 0 8px 24px rgba(108, 140, 255, 0.25);
+}
+
+.skill-pill {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent, #6c8cff);
+  color: var(--accent, #6c8cff);
+}
 
 /* -------------------- Project cards -------------------- */
 .project-card{
@@ -169,11 +206,37 @@ h2{font-size:1.6rem;margin-bottom:10px}
 .link{color:var(--muted);text-decoration:none}
 .link:hover{text-decoration:underline;color:var(--text-light)}
 
-/* -------------------- Contact form -------------------- */
-.form-control:focus{box-shadow:none;border-color:rgba(6,182,212,0.25)}
+/* ---------- Contact section ---------- */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border-radius: 14px;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
 
+a.contact-item:hover {
+  transform: translateX(4px);
+  border-color: var(--accent, #6c8cff);
+  box-shadow: 0 8px 24px rgba(108, 140, 255, 0.2);
+}
 
-#formAlert.alert{border-radius:8px}
+.contact-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  background: rgba(108, 140, 255, 0.12);
+  color: var(--accent, #6c8cff);
+}
 
 
 
@@ -197,17 +260,235 @@ h2{font-size:1.6rem;margin-bottom:10px}
 .small-muted{font-size:0.95rem}
 .gap-18{gap:18px}
 
-/* -------------------- Light theme (toggle) -------------------- */
+/* =========================================================
+   LIGHT THEME
+   ========================================================= */
+.App.light {
+  --accent: #4f6ef7;                 /* white par readable accent */
+  --light-surface: #ffffff;
+  --light-border: rgba(15, 23, 42, 0.10);
+  --light-text: #0f172a;
+  --light-muted: #475569;
+  --light-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
 
-.App.light{
-  background: linear-gradient(180deg,var(--light-bg),#ffffff);
-  color:var(--text-dark);
+  background: linear-gradient(180deg, #f1f5f9 0%, #ffffff 60%);
+  color: var(--light-text);
 }
-.App.light .nav-glass{background:linear-gradient(180deg, rgba(2,6,23,0.03), rgba(2,6,23,0.01));border-color:rgba(2,6,23,0.02)}
-.App.light .card-glass{background:#fff;border:1px solid rgba(2,6,23,0.04)}
-.App.light .nav-link{color:#334155 !important}
-.App.light .small-muted{color:#475569}
-.App.light .project-card{border-color:rgba(2,6,23,0.04)}
+
+/* Headings & text */
+.App.light h1,
+.App.light h2,
+.App.light h3,
+.App.light h4,
+.App.light h5,
+.App.light h6 { color: var(--light-text); }
+.App.light .lead,
+.App.light p { color: #334155; }
+.App.light .small-muted { color: var(--light-muted); }
+.App.light .accent { color: var(--accent); }
+.App.light a:not(.btn):not(.nav-link):not(.contact-item) { color: var(--accent); }
+
+/* Navbar */
+.App.light .nav-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--light-border);
+  box-shadow: 0 2px 16px rgba(15, 23, 42, 0.06);
+}
+.App.light .navbar-brand { color: var(--light-text) !important; }
+.App.light .nav-link { color: #334155 !important; }
+.App.light .nav-link:hover,
+.App.light .nav-link.active { color: var(--accent) !important; }
+.App.light .navbar-toggler { border-color: var(--light-border); }
+.App.light .navbar-toggler-icon { filter: invert(1); }
+
+/* Cards */
+.App.light .card-glass,
+.App.light .project-card {
+  background: var(--light-surface);
+  border: 1px solid var(--light-border);
+  box-shadow: var(--light-shadow);
+}
+.App.light .project-card:hover {
+  box-shadow: 0 14px 36px rgba(79, 110, 247, 0.18);
+  border-color: rgba(79, 110, 247, 0.4);
+}
+
+/* Buttons: outline-light white par dikhta nahi, isliye override */
+.App.light .btn-outline-light {
+  color: var(--light-text);
+  border-color: rgba(15, 23, 42, 0.25);
+  background: transparent;
+}
+.App.light .btn-outline-light:hover {
+  background: var(--light-text);
+  color: #fff;
+  border-color: var(--light-text);
+}
+.App.light .btn-accent,
+.App.light .btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(79, 110, 247, 0.3);
+}
+.App.light .btn-accent:hover,
+.App.light .btn-primary:hover {
+  background: #3b57e0;
+  border-color: #3b57e0;
+  color: #fff;
+}
+
+/* Hero */
+.App.light .hero-bg-deco { opacity: 0.35; }
+.App.light .avatar-glow { opacity: 0.45; }
+.App.light .stat-label { color: var(--light-muted); }
+
+/* ---------- About section ---------- */
+.about-intro {
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.about-highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-highlight:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent, #6c8cff);
+  box-shadow: 0 10px 26px rgba(108, 140, 255, 0.22);
+}
+
+.about-icon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  background: rgba(108, 140, 255, 0.14);
+  color: var(--accent, #6c8cff);
+}
+
+.about-highlight-text {
+  font-size: 0.88rem;
+  margin-top: 2px;
+}
+
+.about-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.about-link {
+  color: inherit;
+  text-decoration: none;
+}
+.about-link:hover {
+  color: var(--accent, #6c8cff);
+}
+
+.social {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  color: inherit;
+  text-decoration: none;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
+}
+.social:hover {
+  transform: translateY(-3px);
+  background: var(--accent, #6c8cff);
+  color: #fff;
+}
+
+/* Light theme */
+.App.light .about-highlight:hover {
+  box-shadow: 0 10px 26px rgba(79, 110, 247, 0.18);
+}
+.App.light .about-icon {
+  background: rgba(79, 110, 247, 0.12);
+  color: var(--accent);
+}
+.App.light .about-link:hover {
+  color: var(--accent);
+}
+.App.light .social {
+  background: rgba(15, 23, 42, 0.05);
+  border-color: rgba(15, 23, 42, 0.1);
+}
+/* Skills */
+.App.light .skill-tile {
+  background: #f8fafc;
+  border: 1px solid var(--light-border);
+  color: var(--light-text);
+}
+.App.light .skill-tile:hover {
+  background: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 8px 22px rgba(79, 110, 247, 0.18);
+}
+.App.light .skill-pill {
+  color: var(--accent);
+  border-color: rgba(79, 110, 247, 0.5);
+  background: rgba(79, 110, 247, 0.06);
+}
+
+/* Contact */
+.App.light .contact-item {
+  background: #f8fafc;
+  border: 1px solid var(--light-border);
+  color: var(--light-text);
+}
+.App.light a.contact-item:hover {
+  background: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 8px 22px rgba(79, 110, 247, 0.15);
+}
+.App.light .contact-icon {
+  background: rgba(79, 110, 247, 0.12);
+  color: var(--accent);
+}
+
+/* Form fields */
+.App.light .form-label { color: var(--light-text); font-weight: 500; }
+.App.light .form-control {
+  background: #fff;
+  color: var(--light-text);
+  border: 1px solid rgba(15, 23, 42, 0.18);
+}
+.App.light .form-control::placeholder { color: #94a3b8; }
+.App.light .form-control:focus {
+  background: #fff;
+  color: var(--light-text);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.2);
+}
+
+/* Progress bars (agar kahin use ho rahe hain) */
+.App.light .progress { background: rgba(15, 23, 42, 0.08); }
+
+/* Footer */
+.App.light footer {
+  border-top: 1px solid var(--light-border);
+  color: var(--light-muted);
+}
+
+/* Scrollbar & selection */
+.App.light ::selection { background: rgba(79, 110, 247, 0.25); }
 
 /* -------------------- Responsive tweaks -------------------- */
 @media(max-width:575px){
